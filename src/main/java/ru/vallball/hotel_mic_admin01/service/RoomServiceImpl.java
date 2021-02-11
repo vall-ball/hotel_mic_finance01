@@ -32,7 +32,7 @@ public class RoomServiceImpl implements RoomService{
 	}
 
 	@Override
-	public Room findHotelById(Long id) {
+	public Room findRoomById(Long id) {
 		return roomRepository.findById(id).get();
 	}
 

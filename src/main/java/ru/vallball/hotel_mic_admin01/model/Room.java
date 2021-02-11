@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -20,11 +21,13 @@ public class Room {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
+	@Min(value = 1, message = "NO!!!" )
 	private int number;
 
+	@Min(value = 1, message = "Нет!!!" )
 	private int floor;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "hotel_id", nullable = false)
 	@JsonBackReference

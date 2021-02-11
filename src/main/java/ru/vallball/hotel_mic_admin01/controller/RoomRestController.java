@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ru.vallball.hotel_mic_admin01.model.Hotel;
 import ru.vallball.hotel_mic_admin01.model.Room;
 import ru.vallball.hotel_mic_admin01.service.RoomService;
 
@@ -34,6 +35,17 @@ public class RoomRestController {
 	public List<Room> list() {
 		return roomService.list();
 	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Object> get(@PathVariable(value = "id") Long id) {
+		try {
+			Room room = roomService.findRoomById(id);
+			return new ResponseEntity<>(room, HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return new ResponseEntity<>("The room not found", HttpStatus.NOT_FOUND);
+		}
+
+	}
 
 	@PostMapping
 	public ResponseEntity<Object> create(@Valid @RequestBody Room room) {
@@ -44,7 +56,7 @@ public class RoomRestController {
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> update(@PathVariable(value = "id") Long id, @RequestBody Room room) {
 		try {
-			Room roomForUpdate = roomService.findHotelById(id);
+			Room roomForUpdate = roomService.findRoomById(id);
 			roomForUpdate.setFloor(room.getFloor());
 			roomForUpdate.setHotel(room.getHotel());
 			roomForUpdate.setNumber(room.getNumber());

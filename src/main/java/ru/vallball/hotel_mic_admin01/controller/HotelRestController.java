@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,13 +36,23 @@ public class HotelRestController {
 
 	@GetMapping
 	public List<Hotel> list() {
-		//System.out.println("@GetMapping");
 		return hotelService.list();
 	}
 
+	@GetMapping("/{id}")
+	public ResponseEntity<Object>  get(@PathVariable(value = "id") Long id) {
+		try {
+			Hotel hotel = hotelService.findHotelById(id);
+			return new ResponseEntity<>(hotel, HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return new ResponseEntity<>("The hotel not found", HttpStatus.NOT_FOUND);
+		}
+
+	}
+	
+
 	@PostMapping
 	public ResponseEntity<Object> create(@Valid @RequestBody Hotel hotel) {
-		//System.out.println("@PostMapping");
 		hotelService.save(hotel);
 		return new ResponseEntity<>("The hotel is created successfully", HttpStatus.CREATED);
 	}
