@@ -1,4 +1,4 @@
-package ru.vallball.hotel_mic_admin01.dto;
+package ru.vallball.hotel_mic_admin01.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

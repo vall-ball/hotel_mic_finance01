@@ -5,12 +5,12 @@ import java.util.List;
 import ru.vallball.hotel_mic_admin01.model.Room;
 
 public interface RoomService {
-		
+
 	void save(Room room);
 
-		List<Room> list();
+	List<Room> list();
 
-		void delete(Long id);
+	void delete(Long id);
 
-		Room findRoomById(Long id);
+	Room findRoomById(Long id);
 }

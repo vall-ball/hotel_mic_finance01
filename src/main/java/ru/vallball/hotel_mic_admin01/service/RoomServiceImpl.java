@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ru.vallball.hotel_mic_admin01.dto.RoomRepository;
+import ru.vallball.hotel_mic_admin01.dao.RoomRepository;
 import ru.vallball.hotel_mic_admin01.model.Room;
 
 @Service

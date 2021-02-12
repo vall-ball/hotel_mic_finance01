@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @ComponentScan("ru.vallball.hotel_mic_admin01")
-@EnableJpaRepositories("ru.vallball.hotel_mic_admin01.dto")
+@EnableJpaRepositories("ru.vallball.hotel_mic_admin01.dao")
 @EntityScan("ru.vallball.hotel_mic_admin01.model")
 @SpringBootApplication
 public class HotelMicAdmin01Application {
