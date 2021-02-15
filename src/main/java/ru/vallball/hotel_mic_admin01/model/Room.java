@@ -11,7 +11,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "rooms")
@@ -32,6 +31,16 @@ public class Room {
 	@JoinColumn(name = "hotel_id", nullable = false)
 	@JsonBackReference
 	private Hotel hotel;
+	
+	private int price;
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
 
 	public int getNumber() {
 		return number;

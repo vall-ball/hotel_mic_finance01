@@ -40,6 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().authorizeRequests().antMatchers(HttpMethod.PUT, "/rooms/**").hasRole("ADMIN")
 		.and().authorizeRequests().antMatchers(HttpMethod.DELETE, "/hotels/**").hasRole("ADMIN")
 		.and().authorizeRequests().antMatchers(HttpMethod.DELETE, "/rooms/**").hasRole("ADMIN")
+		.and().authorizeRequests().antMatchers("/bookings/**").permitAll()
 		.and().httpBasic()
 		.and().csrf().disable();
 		

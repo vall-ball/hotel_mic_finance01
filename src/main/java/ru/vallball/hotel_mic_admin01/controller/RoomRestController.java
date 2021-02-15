@@ -60,6 +60,7 @@ public class RoomRestController {
 			roomForUpdate.setFloor(room.getFloor());
 			roomForUpdate.setHotel(room.getHotel());
 			roomForUpdate.setNumber(room.getNumber());
+			roomForUpdate.setPrice(room.getPrice());
 			roomService.save(roomForUpdate);
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<>("The room not found", HttpStatus.BAD_REQUEST);
