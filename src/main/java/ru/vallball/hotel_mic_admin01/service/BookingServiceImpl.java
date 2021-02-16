@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ru.vallball.hotel_mic_admin01.dao.BookingRepository;
-import ru.vallball.hotel_mic_admin01.dao.IntervalRepository;
 import ru.vallball.hotel_mic_admin01.model.Booking;
 
 @Service
@@ -16,14 +15,9 @@ public class BookingServiceImpl implements BookingService{
 	
 	@Autowired
 	BookingRepository bookingRepository;
-	
-	//@Autowired
-	//IntervalRepository intervalRepository;
 
 	@Override
 	public void save(Booking booking) {
-		//Interval interval = intervalRepository.save(booking.getInterval());
-		//booking.setInterval(interval);
 		bookingRepository.save(booking);
 	}
 

@@ -29,7 +29,7 @@ public class RestErrorHandler extends ResponseEntityExceptionHandler {
 				
 		headers.add("Content-type", "application/json;charset=UTF-8");
 		String bodyOfResponse = exception.getMessage();
-		System.out.print("эдвайс " + bodyOfResponse);
+		System.out.print(bodyOfResponse);
 		return new ResponseEntity<>(bodyOfResponse, headers, status);
 	}
 

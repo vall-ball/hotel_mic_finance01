@@ -32,13 +32,13 @@ public class Room {
 	@JsonBackReference
 	private Hotel hotel;
 	
-	private int price;
+	private Integer price;
 
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 

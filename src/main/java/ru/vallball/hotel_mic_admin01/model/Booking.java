@@ -1,5 +1,7 @@
 package ru.vallball.hotel_mic_admin01.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,13 +28,29 @@ public class Booking {
 	private Room room;
 
 	@ManyToOne
-	@NotNull
 	private User client;
 
-	@OneToOne(cascade = CascadeType.ALL) // one-to-one
-	@JoinColumn(name = "interval_id")
 	@NotNull
-	private Interval interval;
+	private LocalDate start;
+	
+	@NotNull
+	private LocalDate end;
+	
+	public LocalDate getStart() {
+		return start;
+	}
+
+	public void setStart(LocalDate start) {
+		this.start = start;
+	}
+
+	public LocalDate getEnd() {
+		return end;
+	}
+
+	public void setEnd(LocalDate end) {
+		this.end = end;
+	}
 
 	public Room getRoom() {
 		return room;
@@ -52,14 +70,6 @@ public class Booking {
 
 	public Long getId() {
 		return id;
-	}
-
-	public Interval getInterval() {
-		return interval;
-	}
-
-	public void setInterval(Interval interval) {
-		this.interval = interval;
 	}
 
 }
