@@ -70,4 +70,9 @@ public class Room {
 		return id;
 	}
 	
+	@Override
+	public String toString() {
+		return "the room " + this.number + " in " + this.getHotel().getName() + " on the " + this.floor + " floor";
+	}
+	
 }

@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ru.vallball.hotel_mic_admin01.dao.BookingRepository;
+import ru.vallball.hotel_mic_admin01.dao.RoomRepository;
 import ru.vallball.hotel_mic_admin01.model.Hotel;
 import ru.vallball.hotel_mic_admin01.service.HotelService;
 
@@ -33,6 +35,13 @@ public class HotelRestController {
 
 	@Autowired
 	HotelService hotelService;
+	
+	@Autowired
+	BookingRepository bookingRepository;
+	
+	@Autowired
+	RoomRepository roomRepository;
+	
 
 	@GetMapping
 	public List<Hotel> list() {

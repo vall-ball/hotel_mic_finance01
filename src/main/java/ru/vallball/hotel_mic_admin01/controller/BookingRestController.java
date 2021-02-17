@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -28,6 +30,7 @@ import ru.vallball.hotel_mic_admin01.service.UserService;
 @RestController
 @RequestMapping(value = "/bookings")
 public class BookingRestController {
+	private static final Logger logger = LoggerFactory.getLogger(BookingRestController.class);
 
 	@Autowired
 	BookingService bookingService;
@@ -58,7 +61,9 @@ public class BookingRestController {
 			User client = userService.findUserByUsername(auth.getName());
 			booking.setClient(client);
 		}
+		System.out.println("bookingService.save(booking);");
 		bookingService.save(booking);
+		System.out.println("after bookingService.save(booking);");
 		return new ResponseEntity<>("The booking is created successfully", HttpStatus.CREATED);
 	}
 

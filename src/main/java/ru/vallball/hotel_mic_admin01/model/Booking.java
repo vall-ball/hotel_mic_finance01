@@ -14,8 +14,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "bookings")
+@DateValid
+@DatesIsFree
 public class Booking {
 
 	@Id
@@ -31,9 +35,11 @@ public class Booking {
 	private User client;
 
 	@NotNull
+	//@JsonFormat(pattern = "YYYY-MM-dd")
 	private LocalDate start;
 	
 	@NotNull
+	//@JsonFormat(pattern = "YYYY-MM-dd")
 	private LocalDate end;
 	
 	public LocalDate getStart() {
@@ -72,4 +78,9 @@ public class Booking {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return "the booking " + this.id + " in room " + this.getRoom().getId() + " start  " + this.start + " end " + this.end;
+	}
+	
 }
