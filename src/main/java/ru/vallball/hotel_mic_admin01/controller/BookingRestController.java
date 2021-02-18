@@ -42,6 +42,10 @@ public class BookingRestController {
 	public List<Booking> list() {
 		return bookingService.list();
 	}
+	@GetMapping("/test")
+	public void test() {
+		System.out.println("______________TEST_________");
+	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> get(@PathVariable(value = "id") Long id) {
@@ -61,9 +65,7 @@ public class BookingRestController {
 			User client = userService.findUserByUsername(auth.getName());
 			booking.setClient(client);
 		}
-		System.out.println("bookingService.save(booking);");
 		bookingService.save(booking);
-		System.out.println("after bookingService.save(booking);");
 		return new ResponseEntity<>("The booking is created successfully", HttpStatus.CREATED);
 	}
 

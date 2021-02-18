@@ -21,23 +21,14 @@ public class DatesIsFreeValidator implements ConstraintValidator<DatesIsFree, Bo
 
 	@Override
 	public boolean isValid(Booking value, ConstraintValidatorContext context) {
-		System.out.println(value);
 		Long roomId = value.getRoom().getId();
-		System.out.println("roomId = " + roomId);
-		System.out.println(roomRepository.findById(roomId).get());
-		System.out.println(roomRepository.getClass());
 		Room room = roomRepository.findById(roomId).get();
-		System.out.println(room);
 		List<Booking> bookings = bookingRepository.findAllByRoom(room);
-		System.out.println(bookings == null);
-		System.out.println(bookings.size());
 		for (Booking b : bookings) {
-			System.out.println(b);
 			if (!datesNotCrossed(value.getStart(), value.getEnd(), b.getStart(), b.getEnd())) {
 				return false;
 			}
 		}
-		System.out.println("Valid passed");
 		return true;
 	}
 	

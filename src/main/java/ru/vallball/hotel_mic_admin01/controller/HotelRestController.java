@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ru.vallball.hotel_mic_admin01.dao.BookingRepository;
 import ru.vallball.hotel_mic_admin01.dao.RoomRepository;
+import ru.vallball.hotel_mic_admin01.model.Booking;
 import ru.vallball.hotel_mic_admin01.model.Hotel;
 import ru.vallball.hotel_mic_admin01.service.HotelService;
 
@@ -56,9 +57,13 @@ public class HotelRestController {
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<>("The hotel not found", HttpStatus.NOT_FOUND);
 		}
-
 	}
 	
+	@GetMapping("/bookings/{id}")
+	public List<Booking> bookingsOfTheHotel(@PathVariable(value = "id") Long id) {
+		return hotelService.listBookingsOfTheHotel(id);
+	}
+
 
 	@PostMapping
 	public ResponseEntity<Object> create(@Valid @RequestBody Hotel hotel) {

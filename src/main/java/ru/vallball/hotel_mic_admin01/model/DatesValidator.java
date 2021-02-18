@@ -7,7 +7,6 @@ public class DatesValidator implements ConstraintValidator<DateValid, Booking> {
 
 	@Override
 	public boolean isValid(Booking value, ConstraintValidatorContext context) {
-		System.out.println("__DatesValidator___");
 		return value.getEnd().isAfter(value.getStart());
 	}
 

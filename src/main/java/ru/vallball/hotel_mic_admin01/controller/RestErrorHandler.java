@@ -18,18 +18,15 @@ public class RestErrorHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler({RuntimeException.class})
 	public ResponseEntity<Object> handleSQLException(RuntimeException ex, WebRequest request) {
-		System.out.println(ex.getMessage());
 		ex.printStackTrace();
 			return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException exception,
-			HttpHeaders headers, HttpStatus status, WebRequest request) {
-				
+			HttpHeaders headers, HttpStatus status, WebRequest request) {			
 		headers.add("Content-type", "application/json;charset=UTF-8");
 		String bodyOfResponse = exception.getMessage();
-		System.out.print(bodyOfResponse);
 		return new ResponseEntity<>(bodyOfResponse, headers, status);
 	}
 
